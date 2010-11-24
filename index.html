@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="initial-scale=1.0, width=device-width, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>MiniApps - WKShake Plugin</title>
+<style type="text/css">
+body {
+	background: #E9E9E9; 
+	color: #333; 
+	font: 1em/1.3em "Helvetica Neue", Helvetica, Arial, Verdana, sans-serif; /* 16px / 21px */
+	text-shadow: rgba(255,255,255,0.8) 0 1px 0;
+	text-align: center;
+}
+</style>
+<script type="text/javascript" src="WKShake.js"></script>
+</head>
+<body>
+
+<h1>Shake to Undo</h1>
+<h2>for your mobile Web App</h2>
+
+<p>Shake your iPhone/iPad to see a custom action.</p>
+<p><strong>NOTE:</strong> Requires iOS 4.2.1 and above</p>
+
+<script type="text/javascript">
+window.onload = function() {
+
+	//create a new instance of WKShake.
+	var myShakeEvent = new WKShake();
+
+	//start listening for shake event. 
+	//you can also use stop() to stop listening.
+	myShakeEvent.start();
+	
+	//define a custom method to fire when shake occurs.
+	myShakeEvent.shakeEventDidOccur = function() {
+	
+		//put your own code here etc.
+		if (confirm("Undo?")) {
+
+		}
+	}
+};
+</script>
+</body>
+</html>
