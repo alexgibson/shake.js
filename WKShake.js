@@ -7,14 +7,14 @@
  * Released under MIT license 
  * http://miniapps.co.uk/license/
  * 
- * Version 0.1 - Last updated: November 23 2010
- * 
  */
+ 
+/*global window */
 
 function WKShake(threshold) {
 
-	this.threshold = 18, //velocity threshold for shake to register
-	this.lastTime = new Date(); //since no event timestamp property is available, must use date to prevent multiple shakes firing
+	this.threshold = 20;			//default velocity threshold for shake to register
+	this.lastTime = new Date();		//use date to prevent multiple shakes firing
 	
 	//user defined threshold option
 	if (typeof threshold == 'object') {
@@ -22,19 +22,14 @@ function WKShake(threshold) {
 	}
 }
 
-//event handler
-WKShake.prototype.handleEvent = function(e) {
-    switch (e.type) {
-        case 'devicemotion': this.onDeviceMotion(e); break;
-    }
-};
-
 //start listening for devicemotion
 WKShake.prototype.start = function() {
-	this.lastTime = new Date(),
-	this.lastX = null,
-	this.lastY = null,
+
+	this.lastTime = new Date();
+	this.lastX = null;
+	this.lastY = null;
 	this.lastZ = null;
+	
 	if (('ondevicemotion' in window)) {
 		window.addEventListener('devicemotion', this, false);
 	}
@@ -42,17 +37,19 @@ WKShake.prototype.start = function() {
 
 //stop listening for devicemotion
 WKShake.prototype.stop = function() {
+
 	if (('ondevicemotion' in window)) {
 		window.removeEventListener('devicemotion', this, false);
 	}
-	this.lastTime = new Date(),
-	this.lastX = null,
-	this.lastY = null,
+	
+	this.lastTime = new Date();
+	this.lastX = null;
+	this.lastY = null;
 	this.lastZ = null;
 };
 
 //calculates if shake did occur
-WKShake.prototype.onDeviceMotion = function(e) {
+WKShake.prototype.devicemotion = function(e) {
 
 	var current = e.accelerationIncludingGravity;
 
@@ -76,6 +73,7 @@ WKShake.prototype.onDeviceMotion = function(e) {
 			}
 		}
 	}
+	
 	this.lastX = current.x;
 	this.lastY = current.y;
 	this.lastZ = current.z;	
@@ -85,4 +83,12 @@ WKShake.prototype.onDeviceMotion = function(e) {
 WKShake.prototype.shakeEventDidOccur = function() {
 
 
+};
+
+//event handler
+WKShake.prototype.handleEvent = function(e) {
+
+	if (typeof(this[e.type]) === 'function' ) {
+		return this[e.type](e);
+	}
 };
