@@ -1,8 +1,10 @@
 WKShake
 
-Usage
+Note: this plugin relies on having access to device accelerometer via DeviceMotion API:
 
-Note: this plugin requires iOS 4.2.1 or later.
+http://dev.w3.org/geo/api/spec-source-orientation
+
+Usage
 
 First, include the main JavaScript file in the header of your HTML document:
 
