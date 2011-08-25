@@ -14,75 +14,78 @@
 	function WKShake(threshold) {
 
 		//default velocity threshold for shake to register
-		this.threshold = 20;
+		this.threshold = 15;
 		
 		//use date to prevent multiple shakes firing			
-		this.lastTime = new Date();		
+		this.lastTime = new Date();	
+		
+		//accelerometer values
+		this.lastX = null;
+		this.lastY = null;
+		this.lastZ = null;	
 	
 		//user defined threshold option
-		if (typeof threshold == 'object') {
+		if (typeof threshold === 'object') {
 			this.threshold = threshold;
 		}
 	}
-
-	//start listening for devicemotion
-	WKShake.prototype.start = function() {
-
+	
+	//reset timer values
+	WKShake.prototype.reset = function() {
+	
 		this.lastTime = new Date();
 		this.lastX = null;
 		this.lastY = null;
 		this.lastZ = null;
-	
-		if (('ondevicemotion' in window)) {
-			window.addEventListener('devicemotion', this, false);
-		}
+	};
+
+	//start listening for devicemotion
+	WKShake.prototype.start = function() {
+
+		this.reset();
+		if ('ondevicemotion' in window) { window.addEventListener('devicemotion', this, false); }
 	};
 
 	//stop listening for devicemotion
 	WKShake.prototype.stop = function() {
 
-		if (('ondevicemotion' in window)) {
-			window.removeEventListener('devicemotion', this, false);
-		}
-	
-		this.lastTime = new Date();
-		this.lastX = null;
-		this.lastY = null;
-		this.lastZ = null;
+		if ('ondevicemotion' in window) { window.removeEventListener('devicemotion', this, false); }
+		this.reset();
 	};
 
 	//calculates if shake did occur
 	WKShake.prototype.devicemotion = function(e) {
-
+	
 		var current = e.accelerationIncludingGravity;
-
-		if((this.lastX !== null) || (this.lastY !== null) || (this.lastZ !== null)) {
-
-			var deltaX = Math.abs(this.lastX - current.x),
-				deltaY = Math.abs(this.lastY - current.y),
-				deltaZ = Math.abs(this.lastZ - current.z);	
+	
+		if ((this.lastX === null) && (this.lastY === null) && (this.lastZ === null)) {
 		
-			if(((deltaX > this.threshold) && (deltaY > this.threshold)) || 
-		   	((deltaX > this.threshold) && (deltaZ > this.threshold)) || 
-		   	((deltaY > this.threshold) && (deltaZ > this.threshold))) {
+			this.lastX = current.x;
+			this.lastY = current.y;
+			this.lastZ = current.z;	
+			return;
+		}
+
+		var deltaX = Math.abs(this.lastX - current.x),
+			deltaY = Math.abs(this.lastY - current.y),
+			deltaZ = Math.abs(this.lastZ - current.z);	
 		
-				//calculate time in milliseconds since last shake registered
-				var currentTime = new Date(),
-					timeDifference = currentTime.getTime() - this.lastTime.getTime();
+		if(((deltaX > this.threshold) && (deltaY > this.threshold)) || 
+		   ((deltaX > this.threshold) && (deltaZ > this.threshold)) || 
+		   ((deltaY > this.threshold) && (deltaZ > this.threshold))) {
+		
+			//calculate time in milliseconds since last shake registered
+			var currentTime = new Date(),
+				timeDifference = currentTime.getTime() - this.lastTime.getTime();
 			
-				if (timeDifference > 300) {
-					this.shakeEventDidOccur();	
-					this.lastTime = new Date();		
-				}
+			if (timeDifference > 1000) {
+				this.shakeEventDidOccur();
+				this.lastTime = new Date();
 			}
 		}
-	
-		this.lastX = current.x;
-		this.lastY = current.y;
-		this.lastZ = current.z;	
 	};
 
-	//callback method will be implemented by user
+	//callback
 	WKShake.prototype.shakeEventDidOccur = function() {
 
 	};
