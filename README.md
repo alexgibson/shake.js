@@ -1,6 +1,8 @@
 WKShake
 =======================================
 
+A custom 'shake' event plugin for mobile web browsers using device accelerometer.
+
 Note: this plugin relies on having access to device accelerometer via DeviceMotion API:
 
 http://dev.w3.org/geo/api/spec-source-orientation
