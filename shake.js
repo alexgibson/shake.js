@@ -11,7 +11,7 @@
  
 (function() {
 
-	function WKShake(threshold) {
+	function Shake(threshold) {
 
 		//default velocity threshold for shake to register
 		this.threshold = 15;
@@ -31,7 +31,7 @@
 	}
 	
 	//reset timer values
-	WKShake.prototype.reset = function() {
+	Shake.prototype.reset = function() {
 	
 		this.lastTime = new Date();
 		this.lastX = null;
@@ -40,21 +40,21 @@
 	};
 
 	//start listening for devicemotion
-	WKShake.prototype.start = function() {
+	Shake.prototype.start = function() {
 
 		this.reset();
 		if ('ondevicemotion' in window) { window.addEventListener('devicemotion', this, false); }
 	};
 
 	//stop listening for devicemotion
-	WKShake.prototype.stop = function() {
+	Shake.prototype.stop = function() {
 
 		if ('ondevicemotion' in window) { window.removeEventListener('devicemotion', this, false); }
 		this.reset();
 	};
 
 	//calculates if shake did occur
-	WKShake.prototype.devicemotion = function(e) {
+	Shake.prototype.devicemotion = function(e) {
 	
 		var current = e.accelerationIncludingGravity;
 	
@@ -86,12 +86,12 @@
 	};
 
 	//callback
-	WKShake.prototype.shakeEventDidOccur = function() {
+	Shake.prototype.shakeEventDidOccur = function() {
 
 	};
 
 	//event handler
-	WKShake.prototype.handleEvent = function(e) {
+	Shake.prototype.handleEvent = function(e) {
 
 		if (typeof(this[e.type]) === 'function' ) {
 			return this[e.type](e);
@@ -99,6 +99,6 @@
 	};
 
 	//public function
-	window.WKShake = WKShake;
+	window.Shake = Shake;
 	
 })();

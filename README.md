@@ -1,4 +1,4 @@
-WKShake
+shake.js
 =======================================
 
 A custom 'shake' event plugin for mobile web browsers using device accelerometer.
@@ -12,15 +12,15 @@ Usage
 
 First, include the main JavaScript file in the &lt;head&gt; of your HTML document:
 
-	<script type="text/javascript" src="WKShake.js" ></script>
+	<script type="text/javascript" src="shake.js" ></script>
 
 Next, include the following script just before the end &lt;/body&gt; tag in your HTML to create a new instance of the plugin. Put your own code within the shakeEventDidOccur() method for what you want to happen when a shake event occurs.
 
 	<script type="text/javascript"> 
 	window.onload = function() {
 
-		//create a new instance of WKShake.
-		var myShakeEvent = new WKShake();
+		//create a new instance of shake.js.
+		var myShakeEvent = new Shake();
 
 		//start listening for shake event. 
 		//you can also use stop() to stop listening.
