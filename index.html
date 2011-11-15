@@ -47,6 +47,7 @@
 	h5,h6{font-size:1em;margin:1.5em 0;line-height:1.5em;}
 	p{-webkit-hyphens:auto;-moz-hyphens:auto;hyphens:auto;margin:1.5em 0;}
 	pre{padding:1.5em;background:#333333;color:#cccccc;overflow:auto;text-shadow:none;word-wrap:normal;white-space:pre;}
+	code{font-family:"Courier New",monospace,serif;font-size:1em;speak:literal-punctuation;word-wrap:normal;}
 	a:link,a:visited{color:#990000;text-decoration:underline;}
 	a:hover{color:#cc0000;text-decoration:underline;outline:none;}
 	a:active{color:#cc0000;position:relative;top:1px;outline:none;}
@@ -76,17 +77,17 @@
     <p><a href="http://alexgibson.github.com/shake.js/examples/basic.html">View demo</a></p>
 
 	<h2>Dependencies</h2>
-	<p>Your web browser must support the <em>devicemotion</em> event for this plugin to work.</p>
+	<p>Your web browser must support the <code>devicemotion</code> event for this plugin to work.</p>
 	<p><a href="http://dev.w3.org/geo/api/spec-source-orientation">W3C DeviceOrientation Event Specification</a></p>
 
 	<h2>Setup</h2>
-	<p>First, include the main JavaScript file in the &lt;head&gt; of your HTML document:</p>
+	<p>First, include the main JavaScript file in the <code>&lt;head&gt;</code> of your HTML document:</p>
 
-	<pre>&lt;script type="text/javascript" src="shake.js"&gt;&lt;/script&gt;</pre>
+	<pre><code>&lt;script type="text/javascript" src="shake.js"&gt;&lt;/script&gt;</code></pre>
 
-	<p>Next, include the following script just before the end &lt;/body&gt; tag in your HTML to create a new instance of the plugin. Put your own code within the shakeEventDidOccur() method for what you want to happen when a shake event occurs.</p>
+	<p>Next, include the following script just before the end <code>&lt;/body&gt;</code> tag in your HTML to create a new instance of the plugin. Put your own code within the shakeEventDidOccur() method for what you want to happen when a shake event occurs.</p>
 
-	<pre>&lt;script type="text/javascript"&gt; 
+	<pre><code>&lt;script type="text/javascript"&gt; 
 window.onload = function() {
 
 	//create a new instance of shake.js
@@ -105,15 +106,15 @@ window.onload = function() {
 		}
 	}
 };
-&lt;/script&gt;</pre>
+&lt;/script&gt;</code></pre>
 
 	<h2>Threshold parameter (optional)</h2>
 	
-	<p>You can pass a custom <em>threshold</em> parameter to shake.js, to control the velocity of shake a user must perform in order to control when a shake event will register. The default value is 15, which is suited to a small, mobile device such as an iPhone. You may choose to lower the threshold value for larger devices, such as the iPad for example.</p>
+	<p>You can pass a custom <code>threshold</code> parameter to shake.js, to control the velocity of shake a user must perform in order to control when a shake event will register. The default value is <code>15</code>, which is suited to a small, mobile device such as an iPhone. You may choose to lower the threshold value for larger devices, such as the iPad for example.</p>
 	
-	<pre>var threshold = 15; //user defined velocity
+	<pre><code>var threshold = 15; //user defined velocity
 
-var myShakeEvent = new Shake(threshold);</pre>
+var myShakeEvent = new Shake(threshold);</code></pre>
     
 	<h2>License</h2>
 	<p>Copyright (c) 2009-2011 Alex Gibson</p>
@@ -144,7 +145,7 @@ var myShakeEvent = new Shake(threshold);</pre>
     </p>
     <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
       by running:
-      <pre>$ git clone git://github.com/alexgibson/shake.js</pre>
+      <pre><code>$ git clone git://github.com/alexgibson/shake.js</code></pre>
     </p>
 
     <div class="footer">
