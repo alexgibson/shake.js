@@ -65,23 +65,31 @@
 	<pre>&lt;script type="text/javascript"&gt; 
 window.onload = function() {
 
-	//create a new instance of shake.js.
+	//create a new instance of shake.js
 	var myShakeEvent = new Shake();
 
-	//start listening for shake event. 
-	//you can also use stop() to stop listening.
+	//start listening for shake event 
+	//you can also use stop() to stop listening
 	myShakeEvent.start();
 	
-	//define a custom method to fire when shake occurs.
+	//define a custom method to fire when shake occurs
 	myShakeEvent.shakeEventDidOccur = function() {
 	
-		//put your own code here etc.
+		//put your own code here etc
 		if (confirm("Undo?")) {
 
 		}
 	}
 };
 &lt;/script&gt;</pre>
+
+	<h2>Threshold parameter (optional)</h2>
+	
+	<p>You can pass a custom <em>threshold</em> parameter to shake.js, to control the velocity of shake a user must perform in order to control when a shake event will register. The default value is 15, which is suited to a small, mobile device such as an iPhone. You may choose to lower the threshold value for larger devices, such as the iPad for example.</p>
+	
+	<pre>var threshold = 15; //user defined velocity
+
+var myShakeEvent = new Shake(threshold);</pre>
     
 	<h2>License</h2>
 	<p>Copyright (c) 2009-2011 Alex Gibson</p>
@@ -98,9 +106,10 @@ window.onload = function() {
 	<p>Alex Gibson</p>
 
 	<h2>Contact</h2>
+	
 	<ul>
-		<li>T: <a href="http://twitter.com/alex_gibson">@alex_gibson</a></li>
-		<li>W: <a href="http://miniapps.co.uk">http://miniapps.co.uk</a></li>
+		<li>Twitter: <a href="http://twitter.com/alex_gibson">@alex_gibson</a></li>
+		<li>Website: <a href="http://miniapps.co.uk">http://miniapps.co.uk</a></li>
 	</ul> 
 
 	<h2>Download</h2>
