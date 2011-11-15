@@ -13,11 +13,11 @@ http://dev.w3.org/geo/api/spec-source-orientation
 Setup
 ---------------------------------------
 
-First, include the main JavaScript file in the `&lt;head&gt;` of your HTML document:
+First, include the main JavaScript file in the `<head>` of your HTML document:
 
 	<script type="text/javascript" src="shake.js" ></script>
 
-Next, include the following script just before the end `&lt;/body&gt;` tag in your HTML to create a new instance of the plugin. Put your own code within the `shakeEventDidOccur()` method for what you want to happen when a shake event occurs.
+Next, include the following script just before the end `</body>` tag in your HTML to create a new instance of the plugin. Put your own code within the `shakeEventDidOccur()` method for what you want to happen when a shake event occurs.
 
 	<script type="text/javascript"> 
 	window.onload = function() {
