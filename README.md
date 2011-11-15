@@ -49,6 +49,11 @@ You can pass a custom `threshold` parameter to shake.js, to control the velocity
 
 	var myShakeEvent = new Shake(threshold);
 	
+Supported browsers/devices
+---------------------------------------
+
+- Mobile Safari, iOS 4.2.1 (and above)
+	
 License
 ---------------------------------------
 
