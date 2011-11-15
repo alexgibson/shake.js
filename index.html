@@ -2,31 +2,55 @@
 <html>
 <head>
   <meta charset='utf-8'>
+  <meta name="viewport" content="width=device-width" />
 
   <title>alexgibson/shake.js @ GitHub</title>
 
   <style type="text/css">
+	html {
+		margin: 0;
+		padding: 0;
+		overflow-y:scroll;
+		font-size:100%;
+		line-height:1.5em;
+		color:#333333;
+		-webkit-text-size-adjust:100%;
+		-ms-text-size-adjust:100%;
+		text-size-adjust:100%;
+		-webkit-font-smoothing:antialiased;
+		font-smoothing:antialiased;
+	}
+  
     body {
-      margin-top: 1.0em;
-      background-color: #ffffff;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
+    	margin: 0;
+    	padding: 0;
+    	min-height:100%;
+		font-family:Georgia,Cambria,"Times New Roman",Times,serif;
+		background:#eeeeee;
+		background:-moz-linear-gradient(top, #eeeeee 0%, #cccccc 25%, #cccccc 75%, #eeeeee 100%);
+		background:-webkit-gradient(linear, left top, left bottom, color-stop(0%, #eeeeee), color-stop(25%, #cccccc), color-stop(75%, #cccccc), color-stop(100%, #eeeeee));
+		background:-webkit-linear-gradient(top, #eeeeee 0%, #cccccc 25%, #cccccc 75%, #eeeeee 100%);
+		background:-o-linear-gradient(top, #eeeeee 0%, #cccccc 25%, #cccccc 75%, #eeeeee 100%);
+		background:-ms-linear-gradient(top, #eeeeee 0%, #cccccc 25%, #cccccc 75%, #eeeeee 100%);
+		background:linear-gradient(top, #eeeeee 0%, #cccccc 25%, #cccccc 75%, #eeeeee 100%);
     }
     #container {
-      margin: 0 auto;
-      width: 700px;
+      margin: 1.5em auto;
+      max-width: 700px;
+      width: 90%;
     }
-    h1 { font-size: 3.8em; color: #000000; margin-bottom: 3px; }
-    h1 .small { font-size: 0.4em; }
-    h1 a { text-decoration: none }
-    h2 { font-size: 1.5em; color: #000000; }
-    h3 { text-align: center; color: #000000; }
-    a { color: #000000; }
-    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
-    .download { float: right; }
-    pre { background: #000; color: #fff; padding: 15px;}
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .footer { text-align:center; padding-top:30px; font-style: italic; }
+	h1,h2,h3,h4,h5,h6{font-family:"HelveticaNeue",Helvetica,Arial,Verdana,sans-serif;}
+	h1{font-size:2em;margin:0.75em 0;line-height:1.5em;}
+	h2{font-size:1.5em;margin:1em 0;line-height:1em;}
+	h3{font-size:1.25em;margin:1.2em 0;line-height:1.2em;}
+	h4{font-size:1.125em;margin:1.333em 0;line-height:1.333em;}
+	h5,h6{font-size:1em;margin:1.5em 0;line-height:1.5em;}
+	p{-webkit-hyphens:auto;-moz-hyphens:auto;hyphens:auto;margin:1.5em 0;}
+	pre{padding:1.5em;background:#333333;color:#cccccc;overflow:auto;text-shadow:none;word-wrap:normal;white-space:pre;}
+	a:link,a:visited{color:#990000;text-decoration:underline;}
+	a:hover{color:#cc0000;text-decoration:underline;outline:none;}
+	a:active{color:#cc0000;position:relative;top:1px;outline:none;}
+	a:focus{color:#cc0000;position:relative;top:1px;outline:thin dotted;}
   </style>
 </head>
 
