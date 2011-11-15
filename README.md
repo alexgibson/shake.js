@@ -1,41 +1,53 @@
 shake.js
 =======================================
 
-A custom 'shake' event plugin for mobile web browsers using device accelerometer.
+A custom 'shake' event JavaScript plugin for mobile web browsers using device accelerometer.
 
-Note: this plugin relies on having access to device accelerometer via DeviceMotion API:
+Dependencies
+---------------------------------------
+
+Your web browser must support the `devicemotion` event for this plugin to work.
 
 http://dev.w3.org/geo/api/spec-source-orientation
 
-Usage
+Setup
 ---------------------------------------
 
-First, include the main JavaScript file in the &lt;head&gt; of your HTML document:
+First, include the main JavaScript file in the `&lt;head&gt;` of your HTML document:
 
 	<script type="text/javascript" src="shake.js" ></script>
 
-Next, include the following script just before the end &lt;/body&gt; tag in your HTML to create a new instance of the plugin. Put your own code within the shakeEventDidOccur() method for what you want to happen when a shake event occurs.
+Next, include the following script just before the end `&lt;/body&gt;` tag in your HTML to create a new instance of the plugin. Put your own code within the `shakeEventDidOccur()` method for what you want to happen when a shake event occurs.
 
 	<script type="text/javascript"> 
 	window.onload = function() {
 
-		//create a new instance of shake.js.
+		//create a new instance of shake.js
 		var myShakeEvent = new Shake();
 
-		//start listening for shake event. 
-		//you can also use stop() to stop listening.
+		//start listening for shake event 
+		//you can also use stop() to stop listening
 		myShakeEvent.start();
 	
-		//define a custom method to fire when shake occurs.
+		//define a custom method to fire when shake occurs
 		myShakeEvent.shakeEventDidOccur = function() {
 	
-			//put your own code here etc.
+			//put your own code here etc
 			if (confirm("Undo?")) {
 
 			}
 		}
 	};
 	</script>
+
+Threshold parameter (optional)
+---------------------------------------
+
+You can pass a custom `threshold` parameter to shake.js, to control the velocity of shake a user must perform in order to control when a shake event will register. The default value is `15`, which is suited to a small, mobile device such as an iPhone. You may choose to lower the threshold value for larger devices, such as the iPad for example.
+	
+	var threshold = 15; //user defined velocity
+
+	var myShakeEvent = new Shake(threshold);
 	
 License
 ---------------------------------------
