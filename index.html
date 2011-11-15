@@ -46,73 +46,65 @@
       <span class="small">by <a href="https://github.com/alexgibson">alexgibson</a></span></h1>
 
     <div class="description">
-      A custom 'shake' event plugin for mobile web browsers using device accelerometer.
+      A custom 'shake' event JavaScript plugin for mobile web browsers using device accelerometer.
     </div>
 
-    
+	<h2>Dependencies</h2>
+	<p>W3C DeviceMotion API:</p>
+	<p><a href="http://dev.w3.org/geo/api/spec-source-orientation">http://dev.w3.org/geo/api/spec-source-orientation</a></p>
 
-    
-      <h2>Dependencies</h2>
-      <p>W3C DeviceMotion API:
+	<h2>Install</h2>
+	<p>First, include the main JavaScript file in the <head> of your HTML document:</p>
 
-http://dev.w3.org/geo/api/spec-source-orientation</p>
-    
+	<pre>&lt;script type="text/javascript" src="shake.js"&gt;&lt;/script&gt;</pre>
 
-    
-      <h2>Install</h2>
-      <p>First, include the main JavaScript file in the <head> of your HTML document:
+	<p>Next, include the following script just before the end &lt;/body&gt; tag in your HTML to create a new instance of the plugin. Put your own code within the shakeEventDidOccur() method for what you want to happen when a shake event occurs.</p>
 
-<script type="text/javascript" src="shake.js" ></script>
+	<pre>&lt;script type="text/javascript"&gt; 
+window.onload = function() {
 
-Next, include the following script just before the end </body> tag in your HTML to create a new instance of the plugin. Put your own code within the shakeEventDidOccur() method for what you want to happen when a shake event occurs.
+	//create a new instance of shake.js.
+	var myShakeEvent = new Shake();
 
-<script type="text/javascript"> 
-	window.onload = function() {
-
-		//create a new instance of shake.js.
-		var myShakeEvent = new Shake();
-
-		//start listening for shake event. 
-		//you can also use stop() to stop listening.
-		myShakeEvent.start();
+	//start listening for shake event. 
+	//you can also use stop() to stop listening.
+	myShakeEvent.start();
 	
-		//define a custom method to fire when shake occurs.
-		myShakeEvent.shakeEventDidOccur = function() {
+	//define a custom method to fire when shake occurs.
+	myShakeEvent.shakeEventDidOccur = function() {
 	
-			//put your own code here etc.
-			if (confirm("Undo?")) {
+		//put your own code here etc.
+		if (confirm("Undo?")) {
 
-			}
 		}
-	};
-</script></p>
+	}
+};
+&lt;/script&gt;</pre>
+    
+	<h2>License</h2>
+	<p>Copyright (c) 2009-2011 Alex Gibson</p>
+
+	<p><a href="http://miniapps.co.uk">http://miniapps.co.uk/</a></p>
+
+	<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction except as noted below, including without limitation the rights to use, copy, modify, merge, publish, distribute, and/or sublicense, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+
+	<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+
+	<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE</p>
     
 
     
-      <h2>License</h2>
-      <p>Copyright (c) 2009-2011 Alex Gibson
+	<h2>Authors</h2>
+	<p>Alex Gibson</p>
 
-http://miniapps.co.uk/
+	<h2>Contact</h2>
+	<ul>
+		<li>T: <a href="http://twitter.com/alex_gibson">@alex_gibson</a></li>
+		<li>W: <a href="http://miniapps.co.uk/">http://miniapps.co.uk/</a></li>
+	</ul> 
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction except as noted below, including without limitation the rights to use, copy, modify, merge, publish, distribute, and/or sublicense, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE</p>
-    
-
-    
-      <h2>Authors</h2>
-      <p>Alex Gibson<br/>      </p>
-    
-
-    
-      <h2>Contact</h2>
-      <p>Alex Gibson (@alex_gibson)<br/>      </p>
-    
-
-    <h2>Download</h2>
-    <p>
+	<h2>Download</h2>
+	<p>
       You can download this project in either
       <a href="https://github.com/alexgibson/shake.js/zipball/master">zip</a> or
       <a href="https://github.com/alexgibson/shake.js/tarball/master">tar formats.
