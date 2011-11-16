@@ -6,7 +6,7 @@ A custom 'shake' event JavaScript plugin for mobile web browsers using device ac
 Dependencies
 ---------------------------------------
 
-Your web browser must support the `devicemotion` event for this plugin to work.
+Your web browser must support the `devicemotion` event for this plugin to work. Shake.js uses built-in feature detection to determine if it can run in your web browser. It will terminate silently on non-supporting browsers.
 
 http://dev.w3.org/geo/api/spec-source-orientation
 
