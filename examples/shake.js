@@ -12,6 +12,9 @@
 (function() {
 
 	function Shake(threshold) {
+	
+		//feature detect devicemotion support
+		this.hasDeviceMotion = 'ondevicemotion' in window;
 
 		//default velocity threshold for shake to register
 		this.threshold = 15;
@@ -42,15 +45,19 @@
 	//start listening for devicemotion
 	Shake.prototype.start = function() {
 
-		this.reset();
-		if ('ondevicemotion' in window) { window.addEventListener('devicemotion', this, false); }
+		if (this.hasDeviceMotion) {
+			this.reset(); 
+			window.addEventListener('devicemotion', this, false); 
+		}
 	};
 
 	//stop listening for devicemotion
 	Shake.prototype.stop = function() {
 
-		if ('ondevicemotion' in window) { window.removeEventListener('devicemotion', this, false); }
-		this.reset();
+		if (this.hasDeviceMotion) { 
+			window.removeEventListener('devicemotion', this, false); 
+			this.reset();
+		}
 	};
 
 	//calculates if shake did occur
