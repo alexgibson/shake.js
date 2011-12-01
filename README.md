@@ -15,39 +15,40 @@ Setup
 
 First, include the main JavaScript file in the `<head>` of your HTML document:
 
-	<script type="text/javascript" src="shake.js" ></script>
+```
+<script type="text/javascript" src="shake.js" ></script>
+```
 
-Next, include the following script just before the end `</body>` tag in your HTML to create a new instance of the plugin. Put your own code within the `shakeEventDidOccur()` method for what you want to happen when a shake event occurs.
+You can listen for shake events using the following methods in your JavaScript. Put your own code within the `shakeEventDidOccur()` method for what you want to happen when a shake event occurs.
 
-	<script type="text/javascript"> 
-	window.onload = function() {
+``` js
+//create a new instance of shake.js
+var myShakeEvent = new Shake();
 
-		//create a new instance of shake.js
-		var myShakeEvent = new Shake();
-
-		//start listening for shake event 
-		//you can also use stop() to stop listening
-		myShakeEvent.start();
+//start listening for shake event 
+//you can also use stop() to stop listening
+myShakeEvent.start();
 	
-		//define a custom method to fire when shake occurs
-		myShakeEvent.shakeEventDidOccur = function() {
+//define a custom method to fire when shake occurs
+myShakeEvent.shakeEventDidOccur = function() {
 	
-			//put your own code here etc
-			if (confirm("Undo?")) {
+		//put your own code here etc
+		if (confirm("Undo?")) {
 
-			}
 		}
-	};
-	</script>
+	}
+};
+```
 
 Threshold parameter (optional)
 ---------------------------------------
 
 You can pass a custom `threshold` parameter to shake.js, to control the velocity of shake a user must perform in order to control when a shake event will register. The default value is `15`, which is suited to a small, mobile device such as an iPhone. You may choose to lower the threshold value for larger devices, such as the iPad for example.
-	
-	var threshold = 15; //user defined velocity
 
-	var myShakeEvent = new Shake(threshold);
+``` js	
+var threshold = 15; //user defined velocity
+var myShakeEvent = new Shake(threshold);
+```
 	
 Supported browsers/devices
 ---------------------------------------
