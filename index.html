@@ -86,12 +86,9 @@
 
 	<pre><code>&lt;script type="text/javascript" src="shake.js"&gt;&lt;/script&gt;</code></pre>
 
-	<p>Next, include the following script just before the end <code>&lt;/body&gt;</code> tag in your HTML to create a new instance of the plugin. Put your own code within the <code>shakeEventDidOccur()</code> function for what you want to happen when a shake event occurs.</p>
+	<p>You can listen for shake events using the following methods in your JavaScript. Put your own code within the shakeEventDidOccur() method for what you want to happen when a shake event occurs.</p>
 
-	<pre><code>&lt;script type="text/javascript"&gt; 
-window.onload = function() {
-
-	//create a new instance of shake.js
+	<pre><code>//create a new instance of shake.js
 	var myShakeEvent = new Shake();
 
 	//start listening for shake event 
@@ -106,8 +103,7 @@ window.onload = function() {
 
 		}
 	}
-};
-&lt;/script&gt;</code></pre>
+};</code></pre>
 
 	<h2>Threshold parameter (optional)</h2>
 	
