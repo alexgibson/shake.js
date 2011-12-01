@@ -89,21 +89,21 @@
 	<p>You can listen for shake events using the following methods in your JavaScript. Put your own code within the shakeEventDidOccur() method for what you want to happen when a shake event occurs.</p>
 
 	<pre><code>//create a new instance of shake.js
-	var myShakeEvent = new Shake();
+var myShakeEvent = new Shake();
 
-	//start listening for shake event 
-	//you can also use stop() to stop listening
-	myShakeEvent.start();
+//start listening for shake event 
+//you can also use stop() to stop listening
+myShakeEvent.start();
 	
-	//define a custom method to fire when shake occurs
-	myShakeEvent.shakeEventDidOccur = function() {
+//define a custom method to fire when shake occurs
+myShakeEvent.shakeEventDidOccur = function() {
 	
-		//put your own code here etc
-		if (confirm("Undo?")) {
+	//put your own code here etc
+	if (confirm("Undo?")) {
 
-		}
 	}
-};</code></pre>
+}
+</code></pre>
 
 	<h2>Threshold parameter (optional)</h2>
 	
