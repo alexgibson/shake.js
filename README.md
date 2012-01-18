@@ -48,7 +48,7 @@ Supported browsers/devices
 License
 ---------------------------------------
 
-Copyright (c) 2009-2011 Alex Gibson
+Copyright (c) 2009-2012 Alex Gibson
 
 http://miniapps.co.uk/
 
