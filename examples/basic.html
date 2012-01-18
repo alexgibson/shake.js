@@ -29,15 +29,10 @@ body {
 <script type="text/javascript">
 window.onload = function() {
 
-	//create a new instance of shake.js.
-	var myShakeEvent = new Shake();
-
-	//start listening for shake event. 
-	//you can also use stop() to stop listening.
-	myShakeEvent.start();
+	window.addEventListener('shake', shakeEventDidOccur, false);
 	
 	//define a custom method to fire when shake occurs.
-	myShakeEvent.shakeEventDidOccur = function() {
+	function shakeEventDidOccur () {
 	
 		//put your own code here etc.
 		if (confirm("Undo?")) {

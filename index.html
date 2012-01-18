@@ -84,33 +84,24 @@
 	<h2>Setup</h2>
 	<p>First, include the main JavaScript file in the <code>&lt;head&gt;</code> of your HTML document:</p>
 
-	<pre><code>&lt;script type="text/javascript" src="shake.js"&gt;&lt;/script&gt;</code></pre>
+	<pre><code>&lt;script src="shake.js"&gt;&lt;/script&gt;</code></pre>
 
-	<p>You can listen for shake events using the following methods in your JavaScript. Put your own code within the shakeEventDidOccur() method for what you want to happen when a shake event occurs.</p>
+	<p>Next, listen for the custom 'shake' event:</p>
 
-	<pre><code>//create a new instance of shake.js
-var myShakeEvent = new Shake();
-
-//start listening for shake event 
-//you can also use stop() to stop listening
-myShakeEvent.start();
+	<pre><code>window.addEventListener('shake', shakeEventDidOccur, false);
 	
-//define a custom method to fire when shake occurs
-myShakeEvent.shakeEventDidOccur = function() {
+//function to call when shake occurs
+function shakeEventDidOccur () {
 	
-	//put your own code here etc
+	//put your own code here etc.
 	if (confirm("Undo?")) {
 
 	}
-}
-</code></pre>
-
-	<h2>Threshold parameter (optional)</h2>
+}</code></pre>
 	
-	<p>You can pass a custom velocity <code>threshold</code> parameter to shake.js, to control when a shake event will register. The default value is <code>15</code>, which is suited to a small, mobile device such as an iPhone. You may choose to lower the threshold value for larger devices, such as the iPad for example.</p>
+	<p>You can stop listening for shake events like so:</p>
 	
-	<pre><code>var threshold = 15; //user defined velocity
-var myShakeEvent = new Shake(threshold);</code></pre>
+	<pre><code>window.removeEventListener('shake', shakeEventDidOccur, false);</code></pre>
 
 	<h2>Supported browsers/devices</h2>
 	
