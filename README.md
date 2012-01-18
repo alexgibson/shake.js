@@ -16,7 +16,7 @@ Setup
 First, include the main JavaScript file in the `<head>` of your HTML document:
 
 ```
-<script src="shake.js" ></script>
+<script src="shake.js"></script>
 ```
 
 Next, listen for the custom 'shake' event:
