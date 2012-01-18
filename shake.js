@@ -3,7 +3,7 @@
  * Find more about this plugin by visiting
  * http://miniapps.co.uk/
  *
- * Copyright (c) 2010 Alex Gibson, http://miniapps.co.uk/
+ * Copyright (c) 2010-2012 Alex Gibson, http://miniapps.co.uk/
  * Released under MIT license 
  * http://miniapps.co.uk/license/
  * 
@@ -11,10 +11,7 @@
  
 (function() {
 
-	function Shake(threshold) {
-	
-		//feature detect devicemotion support
-		this.hasDeviceMotion = 'ondevicemotion' in window;
+	function Shake() {
 
 		//default velocity threshold for shake to register
 		this.threshold = 15;
@@ -26,11 +23,10 @@
 		this.lastX = null;
 		this.lastY = null;
 		this.lastZ = null;	
-	
-		//user defined threshold option
-		if (typeof threshold === 'object') {
-			this.threshold = threshold;
-		}
+		
+		//create custom event
+		this.event = document.createEvent('Event');
+		this.event.initEvent('shake', true, true);
 	}
 	
 	//reset timer values
@@ -45,19 +41,15 @@
 	//start listening for devicemotion
 	Shake.prototype.start = function() {
 
-		if (this.hasDeviceMotion) {
-			this.reset(); 
-			window.addEventListener('devicemotion', this, false); 
-		}
+		this.reset();
+		if ('ondevicemotion' in window) { window.addEventListener('devicemotion', this, false); }
 	};
 
 	//stop listening for devicemotion
 	Shake.prototype.stop = function() {
 
-		if (this.hasDeviceMotion) { 
-			window.removeEventListener('devicemotion', this, false); 
-			this.reset();
-		}
+		if ('ondevicemotion' in window) { window.removeEventListener('devicemotion', this, false); }
+		this.reset();
 	};
 
 	//calculates if shake did occur
@@ -86,15 +78,10 @@
 				timeDifference = currentTime.getTime() - this.lastTime.getTime();
 			
 			if (timeDifference > 1000) {
-				this.shakeEventDidOccur();
+				window.dispatchEvent(this.event);
 				this.lastTime = new Date();
 			}
 		}
-	};
-
-	//callback
-	Shake.prototype.shakeEventDidOccur = function() {
-
 	};
 
 	//event handler
@@ -104,8 +91,9 @@
 			return this[e.type](e);
 		}
 	};
-
-	//public function
-	window.Shake = Shake;
+	
+	//create a new instance of shake.js.
+	var myShakeEvent = new Shake();
+	myShakeEvent.start();
 	
 })();
