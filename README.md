@@ -40,7 +40,7 @@ You can stop listening for shake events like so:
 window.removeEventListener('shake', shakeEventDidOccur, false);
 ```
 	
-Supported browsers/devices
+Supported web browsers/devices
 ---------------------------------------
 
 - iOS Safari 4.2.1 (and above)
