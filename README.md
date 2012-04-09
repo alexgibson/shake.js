@@ -43,7 +43,9 @@ window.removeEventListener('shake', shakeEventDidOccur, false);
 Supported browsers/devices
 ---------------------------------------
 
-- Mobile Safari, iOS 4.2.1 (and above)
+- iOS Safari 4.2.1 (and above)
+- Android 4.0.3 (default browser)
+- Opera Mobile (Android)
 	
 License
 ---------------------------------------
