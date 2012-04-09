@@ -1,147 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset='utf-8'>
-  <meta name="viewport" content="width=device-width" />
-
-  <title>alexgibson/shake.js @ GitHub</title>
-
-  <style type="text/css">
-	html {
-		margin: 0;
-		padding: 0;
-		overflow-y:scroll;
-		font-size:100%;
-		line-height:1.5em;
-		color:#333333;
-		-webkit-text-size-adjust:100%;
-		-ms-text-size-adjust:100%;
-		text-size-adjust:100%;
-		-webkit-font-smoothing:antialiased;
-		font-smoothing:antialiased;
-	}
-  
-    body {
-    	margin: 0;
-    	padding: 0;
-    	min-height:100%;
-		font-family:Georgia,Cambria,"Times New Roman",Times,serif;
-		background:#eeeeee;
-		background:-moz-linear-gradient(top, #eeeeee 0%, #cccccc 25%, #cccccc 75%, #eeeeee 100%);
-		background:-webkit-gradient(linear, left top, left bottom, color-stop(0%, #eeeeee), color-stop(25%, #cccccc), color-stop(75%, #cccccc), color-stop(100%, #eeeeee));
-		background:-webkit-linear-gradient(top, #eeeeee 0%, #cccccc 25%, #cccccc 75%, #eeeeee 100%);
-		background:-o-linear-gradient(top, #eeeeee 0%, #cccccc 25%, #cccccc 75%, #eeeeee 100%);
-		background:-ms-linear-gradient(top, #eeeeee 0%, #cccccc 25%, #cccccc 75%, #eeeeee 100%);
-		background:linear-gradient(top, #eeeeee 0%, #cccccc 25%, #cccccc 75%, #eeeeee 100%);
-    }
-    #container {
-      margin: 1.5em auto;
-      padding: 0;
-      max-width: 700px;
-      width: 90%;
-    }
-	h1,h2,h3,h4,h5,h6{font-family:"HelveticaNeue",Helvetica,Arial,Verdana,sans-serif;}
-	h1{font-size:2em;margin:0.75em 0;line-height:1.5em;}
-	h2{font-size:1.5em;margin:1em 0;line-height:1em;}
-	h3{font-size:1.25em;margin:1.2em 0;line-height:1.2em;}
-	h4{font-size:1.125em;margin:1.333em 0;line-height:1.333em;}
-	h5,h6{font-size:1em;margin:1.5em 0;line-height:1.5em;}
-	p{-webkit-hyphens:auto;-moz-hyphens:auto;hyphens:auto;margin:1.5em 0;}
-	pre{padding:1.5em;background:#333333;color:#cccccc;overflow:auto;text-shadow:none;word-wrap:normal;white-space:pre;}
-	code{font-family:"Courier New",monospace,serif;font-size:1em;speak:literal-punctuation;word-wrap:normal;}
-	a:link,a:visited{color:#990000;text-decoration:underline;}
-	a:hover{color:#cc0000;text-decoration:underline;outline:none;}
-	a:active{color:#cc0000;position:relative;top:1px;outline:none;}
-	a:focus{color:#cc0000;position:relative;top:1px;outline:thin dotted;}
-	img.qr{margin:1.5em 0;}
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="initial-scale=1.0, width=device-width, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>MiniApps - shake.js</title>
+<style type="text/css">
+body {
+	background: #E9E9E9; 
+	color: #333; 
+	font: 1em/1.3em "Helvetica Neue", Helvetica, Arial, Verdana, sans-serif; /* 16px / 21px */
+	text-shadow: rgba(255,255,255,0.8) 0 1px 0;
+	text-align: center;
+}
+</style>
+<script type="text/javascript" src="shake.js"></script>
 </head>
-
 <body>
-  <a href="https://github.com/alexgibson/shake.js"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
 
-  <div id="container">
+<h1>Shake to Undo</h1>
+<h2>for your mobile web app</h2>
 
-    <div class="download">
-      <a href="https://github.com/alexgibson/shake.js/zipball/master">
-        <img border="0" width="90" src="https://github.com/images/modules/download/zip.png"></a>
-      <a href="https://github.com/alexgibson/shake.js/tarball/master">
-        <img border="0" width="90" src="https://github.com/images/modules/download/tar.png"></a>
-    </div>
+<p>Shake your iPhone/iPad to see a custom action.</p>
+<p><strong>NOTE:</strong> Requires iOS 4.2.1 and above</p>
 
-    <h1><a href="https://github.com/alexgibson/shake.js">shake.js</a>
-      <span class="small">by <a href="https://github.com/alexgibson">alexgibson</a></span></h1>
+<p><a href="http://dev.w3.org/geo/api/spec-source-orientation">W3C DeviceOrientation Event Specification</a></p>
 
-    <div class="description">
-      A custom 'shake' event JavaScript plugin for mobile web browsers using device accelerometer.
-    </div>
-    
-    <p><a href="http://alexgibson.github.com/shake.js/examples/basic.html">View demo</a></p>
+<script type="text/javascript">
+window.onload = function() {
 
-	<h2>Dependencies</h2>
-	<p>Your web browser must support the <code>devicemotion</code> event for this plugin to work. Shake.js uses built&ndash;in feature detection to determine if it can run in your web browser. It will terminate silently on non&ndash;supporting browsers.</p>
-	<p><a href="http://dev.w3.org/geo/api/spec-source-orientation">W3C DeviceOrientation Event Specification</a></p>
-
-	<h2>Setup</h2>
-	<p>First, include the main JavaScript file in the <code>&lt;head&gt;</code> of your HTML document:</p>
-
-	<pre><code>&lt;script src="shake.js"&gt;&lt;/script&gt;</code></pre>
-
-	<p>Next, listen for the custom 'shake' event:</p>
-
-	<pre><code>window.addEventListener('shake', shakeEventDidOccur, false);
+	window.addEventListener('shake', shakeEventDidOccur, false);
 	
-//function to call when shake occurs
-function shakeEventDidOccur () {
+	//define a custom method to fire when shake occurs.
+	function shakeEventDidOccur () {
 	
-	//put your own code here etc.
-	if (confirm("Undo?")) {
+		//put your own code here etc.
+		if (confirm("Undo?")) {
 
+		}
 	}
-}</code></pre>
-	
-	<p>You can stop listening for shake events like so:</p>
-	
-	<pre><code>window.removeEventListener('shake', shakeEventDidOccur, false);</code></pre>
-
-	<h2>Supported browsers/devices</h2>
-	
-	<ul>
-		<li>Mobile Safari, iOS 4.2.1 (and above)</li>
-	</ul>
-    
-	<h2>MIT License</h2>
-	<p><a href="http://miniapps.co.uk/license/">miniapps.co.uk/license</a></p>
-	<p>Copyright &copy; Alex Gibson</p>
-
-	<h2>Authors</h2>
-	<p>Alex Gibson</p>
-
-	<h2>Contact</h2>
-	
-	<ul>
-		<li>Twitter: <a href="http://twitter.com/alex_gibson">@alex_gibson</a></li>
-		<li>Website: <a href="http://miniapps.co.uk">miniapps.co.uk</a></li>
-	</ul> 
-
-	<h2>Download</h2>
-	<p>
-      You can download this project in either
-      <a href="https://github.com/alexgibson/shake.js/zipball/master">zip</a> or
-      <a href="https://github.com/alexgibson/shake.js/tarball/master">tar formats.
-    </p>
-    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
-      by running:
-      <pre><code>$ git clone git://github.com/alexgibson/shake.js</code></pre>
-    </p>
-
-    <div class="footer">
-      get the source code on GitHub : <a href="https://github.com/alexgibson/shake.js">alexgibson/shake.js</a>
-    </div>
-    
-    <img class="qr" width="150" height="150" src="http://goo.gl/bHNzp.qr" alt="QR Code to launch live demo" title="You can launch this demo directly on your mobile phone by scanning this barcode." />
-
-  </div>
-
+};
+</script>
 </body>
 </html>
