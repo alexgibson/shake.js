@@ -46,6 +46,7 @@ Supported web browsers/devices
 - iOS Safari 4.2.1 (and above)
 - Android 4.0.3 (default browser)
 - Opera Mobile (Android)
+- BlackBerry PlayBook 2.0
 	
 License
 ---------------------------------------
