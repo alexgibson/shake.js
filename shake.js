@@ -1,11 +1,10 @@
 /*
  *
  * Find more about this plugin by visiting
- * http://miniapps.co.uk/
+ * http://alxgbsn.co.uk/
  *
- * Copyright (c) 2010-2012 Alex Gibson, http://miniapps.co.uk/
+ * Copyright (c) 2010-2012 Alex Gibson
  * Released under MIT license
- * http://miniapps.co.uk/license/
  *
  */
 
