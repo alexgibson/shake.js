@@ -3,6 +3,13 @@ shake.js
 
 A custom 'shake' event JavaScript plugin for mobile web browsers using device accelerometer.
 
+Installation
+---------------------------------------
+
+* Download: [zip](https://github.com/alexgibson/shake.js/zipball/master)
+* [Bower](https://github.com/twitter/bower/): `bower install shake.js`
+* Git: `git clone https://github.com/alexgibson/shake.js`
+
 Dependencies
 ---------------------------------------
 
