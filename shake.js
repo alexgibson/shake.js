@@ -87,6 +87,11 @@
 				this.lastTime = new Date();
 			}
 		}
+		
+		this.lastX = current.x;
+		this.lastY = current.y;
+		this.lastZ = current.z;
+
 	};
 
 	//event handler
