@@ -49,7 +49,7 @@
 	//start listening for devicemotion
 	Shake.prototype.start = function () {
 		this.reset();
-		if (this.hasDeviceMotion) { window.addEventListener('devicemotion', this, false) }; 
+		if (this.hasDeviceMotion) { window.addEventListener('devicemotion', this, false); } 
 	};
 
 	//stop listening for devicemotion
