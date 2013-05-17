@@ -27,8 +27,10 @@
 		this.lastZ = null;
 
 		//create custom event
-		this.event = document.createEvent('Event');
-		this.event.initEvent('shake', true, true);
+		this.event = new CustomEvent('shake', {
+      bubbles: true,
+      cancelable: true
+    });
 	}
 
 	//reset timer values
