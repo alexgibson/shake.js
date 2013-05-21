@@ -13,7 +13,6 @@
     function Shake() {
 
         //feature detect
-        if(!('createEvent' in document)) return false
         this.hasDeviceMotion = 'ondevicemotion' in window;
 
         //default velocity threshold for shake to register
@@ -33,9 +32,11 @@
                 bubbles: true,
                 cancelable: true
             });
-        } else {
+        } else if (typeof document.createEvent === "function") {
             this.event = document.createEvent('Event');
             this.event.initEvent('shake', true, true);
+        } else { 
+          return false;
         }
     }
 
