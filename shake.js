@@ -18,7 +18,7 @@
         //default velocity threshold for shake to register
         this.threshold = 15;
 
-        //use date to prevent multiple shakes firing    
+        //use date to prevent multiple shakes firing
         this.lastTime = new Date();
 
         //accelerometer values
@@ -32,9 +32,11 @@
                 bubbles: true,
                 cancelable: true
             });
-        } else {
+        } else if (typeof document.createEvent === "function") {
             this.event = document.createEvent('Event');
             this.event.initEvent('shake', true, true);
+        } else { 
+          return false;
         }
     }
 
@@ -49,7 +51,7 @@
     //start listening for devicemotion
     Shake.prototype.start = function () {
         this.reset();
-        if (this.hasDeviceMotion) { window.addEventListener('devicemotion', this, false); } 
+        if (this.hasDeviceMotion) { window.addEventListener('devicemotion', this, false); }
     };
 
     //stop listening for devicemotion
@@ -90,7 +92,7 @@
                 this.lastTime = new Date();
             }
         }
-        
+
         this.lastX = current.x;
         this.lastY = current.y;
         this.lastZ = current.z;
@@ -107,6 +109,6 @@
 
     //create a new instance of shake.js.
     var myShakeEvent = new Shake();
-    myShakeEvent.start();
+    myShakeEvent && myShakeEvent.start();
 
 }(window, document));
