@@ -54,6 +54,7 @@ Supported web browsers/devices
 - Android 4.0.3 (default browser)
 - Opera Mobile (Android)
 - BlackBerry PlayBook 2.0
+- Google Chrome
 - Firefox for Android
 - FirefoxOS Devices
 
