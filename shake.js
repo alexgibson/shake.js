@@ -14,6 +14,7 @@
 
         //feature detect
         this.hasDeviceMotion = 'ondevicemotion' in window;
+        this.hasDeviceOrientation = window.hasOwnProperty("orientation");
 
         //default velocity threshold for shake to register
         this.threshold = 15;
@@ -52,18 +53,56 @@
     Shake.prototype.start = function () {
         this.reset();
         if (this.hasDeviceMotion) { window.addEventListener('devicemotion', this, false); }
+        else if (this.hasDeviceOrientation) { window.addEventListener('deviceorientation', this, false); }
     };
 
     //stop listening for devicemotion
     Shake.prototype.stop = function () {
 
         if (this.hasDeviceMotion) { window.removeEventListener('devicemotion', this, false); }
+        else if (this.hasDeviceOrientation) { window.removeEventListener('deviceorientation', this, false); }
         this.reset();
+    };
+
+    Shake.prototype.deviceorientation = function(e) {
+      var currentTime,
+          timeDifference,
+          deltaX = 0,
+          deltaY = 0,
+          deltaZ = 0;
+
+      threshold = 50;
+
+      if ((this.lastX === null) && (this.lastY === null) && (this.lastZ === null)) {
+          this.lastX = e.gamma;
+          this.lastY = e.beta;
+          this.lastZ = e.alpha;
+          return;
+      }
+
+      deltaX = Math.abs(this.lastX - e.gamma);
+      deltaY = Math.abs(this.lastY - e.beta);
+      deltaZ = Math.abs(this.lastZ - e.alpha);
+
+      if (((deltaX > threshold) && (deltaY > threshold)) || ((deltaX > threshold) && (deltaZ > threshold)) || ((deltaY > threshold) && (deltaZ > threshold))) {
+          //calculate time in milliseconds since last shake registered
+          currentTime = new Date();
+          timeDifference = currentTime.getTime() - this.lastTime.getTime();
+
+          if (timeDifference > 1000) {
+              window.dispatchEvent(this.event);
+              this.lastTime = new Date();
+          }
+      }
+
+      this.lastX = e.gamma;
+      this.lastY = e.beta;
+      this.lastZ = e.alpha;
+
     };
 
     //calculates if shake did occur
     Shake.prototype.devicemotion = function (e) {
-
         var current = e.accelerationIncludingGravity,
             currentTime,
             timeDifference,
