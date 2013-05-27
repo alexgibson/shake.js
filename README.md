@@ -55,7 +55,9 @@ Supported web browsers/devices
 - Opera Mobile (Android)
 - BlackBerry PlayBook 2.0
 - Google Chrome
-	
+- Firefox for Android
+- FirefoxOS Devices
+
 License
 ---------------------------------------
 
