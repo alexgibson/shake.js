@@ -56,6 +56,7 @@ Supported web browsers/devices
 - BlackBerry PlayBook 2.0
 - Firefox for Android
 - FirefoxOS Devices
+- Google Chrome (Android 4.2.2)
 
 License
 ---------------------------------------
