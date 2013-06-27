@@ -17,7 +17,7 @@
         this.hasDeviceOrientation = 'orientation' in window;
 
         //default velocity threshold for shake to register
-        this.motionThreshold = 25;
+        this.motionThreshold = 15;
         this.orientationThreshold = 50;
 
         //use date to prevent multiple shakes firing
