@@ -27,8 +27,8 @@
         this.lastZ = null;
 
         //create custom event
-        if (typeof CustomEvent === "function") {
-            this.event = new CustomEvent('shake', {
+        if (typeof document.CustomEvent === "function") {
+            this.event = new document.CustomEvent('shake', {
                 bubbles: true,
                 cancelable: true
             });
