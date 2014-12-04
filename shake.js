@@ -3,20 +3,30 @@
  * Find more about this plugin by visiting
  * http://alxgbsn.co.uk/
  *
- * Copyright (c) 2010-2012 Alex Gibson
+ * Copyright (c) 2010-2014 Alex Gibson
  * Released under MIT license
  *
  */
 
 (function (window, document) {
+    'use strict';
 
-    function Shake() {
+    function Shake(options) {
 
         //feature detect
         this.hasDeviceMotion = 'ondevicemotion' in window;
 
-        //default velocity threshold for shake to register
-        this.threshold = 15;
+        this.options = {
+            threshold: 15 //default velocity threshold for shake to register
+        };
+
+        if (typeof options === 'object') {
+            for (var i in options) {
+                if (options.hasOwnProperty(i)) {
+                    this.options[i] = options[i];
+                }
+            }
+        }
 
         //use date to prevent multiple shakes firing
         this.lastTime = new Date();
@@ -27,12 +37,12 @@
         this.lastZ = null;
 
         //create custom event
-        if (typeof document.CustomEvent === "function") {
+        if (typeof document.CustomEvent === 'function') {
             this.event = new document.CustomEvent('shake', {
                 bubbles: true,
                 cancelable: true
             });
-        } else if (typeof document.createEvent === "function") {
+        } else if (typeof document.createEvent === 'function') {
             this.event = document.createEvent('Event');
             this.event.initEvent('shake', true, true);
         } else { 
@@ -82,7 +92,7 @@
         deltaY = Math.abs(this.lastY - current.y);
         deltaZ = Math.abs(this.lastZ - current.z);
 
-        if (((deltaX > this.threshold) && (deltaY > this.threshold)) || ((deltaX > this.threshold) && (deltaZ > this.threshold)) || ((deltaY > this.threshold) && (deltaZ > this.threshold))) {
+        if (((deltaX > this.options.threshold) && (deltaY > this.options.threshold)) || ((deltaX > this.options.threshold) && (deltaZ > this.options.threshold)) || ((deltaY > this.options.threshold) && (deltaZ > this.options.threshold))) {
             //calculate time in milliseconds since last shake registered
             currentTime = new Date();
             timeDifference = currentTime.getTime() - this.lastTime.getTime();
@@ -107,8 +117,6 @@
         }
     };
 
-    //create a new instance of shake.js.
-    var myShakeEvent = new Shake();
-    myShakeEvent && myShakeEvent.start();
+    window.Shake = Shake;
 
 }(window, document));
