@@ -26,9 +26,17 @@ First, include the main JavaScript file in the `<head>` of your HTML document:
 <script src="shake.js"></script>
 ```
 
-Next, listen for the custom 'shake' event:
+Next, create a new Shake instance and listen for the custom 'shake' event:
 
 ```
+//create a new instance of shake.js.
+var myShakeEvent = new Shake({
+    threshold: 15 // optional shake strength threshold
+});
+
+// start listening to device motion
+myShakeEvent.start();
+
 window.addEventListener('shake', shakeEventDidOccur, false);
 
 //function to call when shake occurs
@@ -45,6 +53,12 @@ You can stop listening for shake events like so:
 
 ```
 window.removeEventListener('shake', shakeEventDidOccur, false);
+```
+
+To stop listening to device motion, you can call:
+
+```
+myShakeEvent.stop();
 ```
 
 Supported web browsers/devices
