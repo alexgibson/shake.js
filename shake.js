@@ -17,7 +17,8 @@
         this.hasDeviceMotion = 'ondevicemotion' in window;
 
         this.options = {
-            threshold: 15 //default velocity threshold for shake to register
+            threshold: 15, //default velocity threshold for shake to register
+            timeDifference: 1000
         };
 
         if (typeof options === 'object') {
@@ -46,7 +47,7 @@
             this.event = document.createEvent('Event');
             this.event.initEvent('shake', true, true);
         } else { 
-          return false;
+            return false;
         }
     }
 
@@ -97,7 +98,7 @@
             currentTime = new Date();
             timeDifference = currentTime.getTime() - this.lastTime.getTime();
 
-            if (timeDifference > 1000) {
+            if (timeDifference > this.options.timeDifference) {
                 window.dispatchEvent(this.event);
                 this.lastTime = new Date();
             }
