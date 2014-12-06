@@ -31,7 +31,8 @@ Next, create a new Shake instance and listen for the custom 'shake' event:
 ```
 //create a new instance of shake.js.
 var myShakeEvent = new Shake({
-    threshold: 15 // optional shake strength threshold
+    threshold: 15, // optional shake strength threshold
+    timeout: 1000 // optional, determines the frequency of event generation
 });
 
 // start listening to device motion
