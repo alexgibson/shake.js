@@ -7,12 +7,19 @@
  * Released under MIT license
  *
  */
-
-(function (window, document) {
+(function(window, factory) {
+    if (typeof define === 'function' && define.amd) {
+        define(function() {
+            return factory(window, window.document);
+        });
+    } else if (typeof module !== 'undefined' && module.exports) {
+        module.exports = factory(window, window.document);
+    } else {
+        window.Shake = factory(window, window.document);
+    }
+} (this, function (window, document) {
     'use strict';
-
     function Shake(options) {
-
         //feature detect
         this.hasDeviceMotion = 'ondevicemotion' in window;
 
@@ -117,6 +124,5 @@
         }
     };
 
-    window.Shake = Shake;
-
-}(window, document));
+    return Shake;
+}));

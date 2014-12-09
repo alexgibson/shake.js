@@ -61,6 +61,24 @@ To stop listening to device motion, you can call:
 myShakeEvent.stop();
 ```
 
+You also can use it as an AMD module:
+
+```
+define(['./shake'], function(Shake) {
+     var myShakeEvent = new Shake();
+    // ...
+});
+```
+
+Or as a CommonJS module:
+
+```
+var Shake = require('./shake');
+var myShakeEvent = new Shake();
+// ...
+```
+  
+
 Supported web browsers/devices
 ---------------------------------------
 
