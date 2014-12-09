@@ -18,7 +18,7 @@
 
         this.options = {
             threshold: 15, //default velocity threshold for shake to register
-            timeDifference: 1000
+            timeout: 1000 //default interval between events
         };
 
         if (typeof options === 'object') {
@@ -98,7 +98,7 @@
             currentTime = new Date();
             timeDifference = currentTime.getTime() - this.lastTime.getTime();
 
-            if (timeDifference > this.options.timeDifference) {
+            if (timeDifference > this.options.timeout) {
                 window.dispatchEvent(this.event);
                 this.lastTime = new Date();
             }
