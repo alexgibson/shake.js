@@ -1,23 +1,20 @@
 /*
- *
- * Find more about this plugin by visiting
- * http://alxgbsn.co.uk/
- *
- * Copyright (c) 2010-2014 Alex Gibson
- * Released under MIT license
- *
+ * Author: Alex Gibson
+ * https://github.com/alexgibson/shake.js
+ * License: MIT license
  */
-(function(window, factory) {
+
+(function(global, factory) {
     if (typeof define === 'function' && define.amd) {
         define(function() {
-            return factory(window, window.document);
+            return factory(global, global.document);
         });
     } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(window, window.document);
+        module.exports = factory(global, global.document);
     } else {
-        window.Shake = factory(window, window.document);
+        global.Shake = factory(global, global.document);
     }
-} (this, function (window, document) {
+} (typeof window !== 'undefined' ? window : this, function (window, document) {
     'use strict';
     function Shake(options) {
         //feature detect
