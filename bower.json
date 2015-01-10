@@ -1,7 +1,7 @@
 {
     "name": "shake.js",
     "description": "A custom 'shake' event plugin for mobile web browsers using device accelerometer.",
-    "version": "1.1.0",
+    "version": "1.2.1",
     "author": {
         "name": "Alex Gibson",
         "email": "alxgbsn@gmail.com"
