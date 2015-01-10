@@ -7,17 +7,25 @@
  * Released under MIT license
  *
  */
-
-(function (window, document) {
+(function(window, factory) {
+    if (typeof define === 'function' && define.amd) {
+        define(function() {
+            return factory(window, window.document);
+        });
+    } else if (typeof module !== 'undefined' && module.exports) {
+        module.exports = factory(window, window.document);
+    } else {
+        window.Shake = factory(window, window.document);
+    }
+} (this, function (window, document) {
     'use strict';
-
     function Shake(options) {
-
         //feature detect
         this.hasDeviceMotion = 'ondevicemotion' in window;
 
         this.options = {
-            threshold: 15 //default velocity threshold for shake to register
+            threshold: 15, //default velocity threshold for shake to register
+            timeout: 1000 //default interval between events
         };
 
         if (typeof options === 'object') {
@@ -45,8 +53,8 @@
         } else if (typeof document.createEvent === 'function') {
             this.event = document.createEvent('Event');
             this.event.initEvent('shake', true, true);
-        } else { 
-          return false;
+        } else {
+            return false;
         }
     }
 
@@ -97,7 +105,7 @@
             currentTime = new Date();
             timeDifference = currentTime.getTime() - this.lastTime.getTime();
 
-            if (timeDifference > 1000) {
+            if (timeDifference > this.options.timeout) {
                 window.dispatchEvent(this.event);
                 this.lastTime = new Date();
             }
@@ -117,6 +125,5 @@
         }
     };
 
-    window.Shake = Shake;
-
-}(window, document));
+    return Shake;
+}));
