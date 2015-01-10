@@ -7,17 +7,17 @@
  * Released under MIT license
  *
  */
-(function(window, factory) {
+(function(global, factory) {
     if (typeof define === 'function' && define.amd) {
         define(function() {
-            return factory(window, window.document);
+            return factory(global, global.document);
         });
     } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(window, window.document);
+        module.exports = factory(global, global.document);
     } else {
-        window.Shake = factory(window, window.document);
+        global.Shake = factory(global, global.document);
     }
-} (this, function (window, document) {
+} (typeof window !== 'undefined' ? window : this, function (window, document) {
     'use strict';
     function Shake(options) {
         //feature detect
