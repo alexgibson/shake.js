@@ -7,8 +7,8 @@
 <title>Shake.js</title>
 <style type="text/css">
 body {
-    background: #E9E9E9; 
-    color: #333; 
+    background: #E9E9E9;
+    color: #333;
     font: 1em/1.3em "Helvetica Neue", Helvetica, Arial, Verdana, sans-serif; /* 16px / 21px */
     text-shadow: rgba(255,255,255,0.8) 0 1px 0;
     text-align: center;
@@ -39,10 +39,10 @@ window.onload = function() {
 
     // register a shake event
     window.addEventListener('shake', shakeEventDidOccur, false);
-    
+
     //shake event callback
     function shakeEventDidOccur () {
-    
+
         //put your own code here etc.
         if (confirm('Undo?')) {
 

@@ -1,12 +1,9 @@
 /*
- *
- * Find more about this plugin by visiting
- * http://alxgbsn.co.uk/
- *
- * Copyright (c) 2010-2014 Alex Gibson
- * Released under MIT license
- *
+ * Author: Alex Gibson
+ * https://github.com/alexgibson/shake.js
+ * License: MIT license
  */
+
 (function(global, factory) {
     if (typeof define === 'function' && define.amd) {
         define(function() {

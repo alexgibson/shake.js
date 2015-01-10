@@ -1,4 +1,4 @@
-Copyright (c) 2013 Alex Gibson
+Copyright (c) 2012-2015 Alex Gibson
 
 http://alxgbsn.co.uk/
 
