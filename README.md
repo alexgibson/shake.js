@@ -7,6 +7,7 @@ Installation
 ---------------------------------------
 
 * Download: [zip](https://github.com/alexgibson/shake.js/zipball/master)
+* [NPM](https://www.npmjs.org/): `npm install shake.js`
 * [Bower](https://github.com/twitter/bower/): `bower install shake.js`
 * Git: `git clone https://github.com/alexgibson/shake.js`
 
@@ -20,7 +21,21 @@ http://w3c.github.io/deviceorientation/spec-source-orientation.html
 Setup
 ---------------------------------------
 
-First, include the main JavaScript file in the `<head>` of your HTML document:
+For CommonJS using NPM:
+
+```
+var Shake = require('shake.js');
+```
+
+For AMD module:
+
+```
+define(['./shake'], function(Shake) {
+    // ...
+});
+```
+
+In the browser:
 
 ```
 <script src="shake.js"></script>
@@ -66,30 +81,12 @@ To stop listening to device motion, you can call:
 myShakeEvent.stop();
 ```
 
-You also can use it as an AMD module:
-
-```
-define(['./shake'], function(Shake) {
-     var myShakeEvent = new Shake();
-    // ...
-});
-```
-
-Or as a CommonJS module:
-
-```
-var Shake = require('./shake');
-var myShakeEvent = new Shake();
-// ...
-```
-
-
 Supported web browsers/devices
 ---------------------------------------
 
 - iOS Safari 4.2.1 (and above)
 - Android 4.0.3 (default browser)
-- Chrome 41+ for Android 
+- Chrome 41+ for Android
 - Opera Mobile (Android)
 - BlackBerry PlayBook 2.0
 - Firefox for Android

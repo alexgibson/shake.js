@@ -1,6 +1,6 @@
 {
   "name": "shake.js",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "A custom 'shake' event plugin for mobile web browsers using device accelerometer.",
   "keywords": [
     "shake",
