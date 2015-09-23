@@ -56,16 +56,16 @@ Start listening to device motion:
 myShakeEvent.start();
 ```
 
-Register a `shake` event listener on `window` with your callback:
+Register a `shake` event listener on `window` with your callback, you can get the shake strength in the callback function by accessing e.detail.strength property.
 
 ```
 window.addEventListener('shake', shakeEventDidOccur, false);
 
 //function to call when shake occurs
-function shakeEventDidOccur () {
+function shakeEventDidOccur (e) {
 
     //put your own code here etc.
-    alert('shake!');
+    alert('Shake, the strength:'+e.detail.strength);
 }
 ```
 
