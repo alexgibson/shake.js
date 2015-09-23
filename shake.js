@@ -4,9 +4,9 @@
  * License: MIT license
  */
 
-(function(global, factory) {
+(function (global, factory) {
     if (typeof define === 'function' && define.amd) {
-        define(function() {
+        define(function () {
             return factory(global, global.document);
         });
     } else if (typeof module !== 'undefined' && module.exports) {
@@ -14,7 +14,7 @@
     } else {
         global.Shake = factory(global, global.document);
     }
-} (typeof window !== 'undefined' ? window : this, function (window, document) {
+}(typeof window !== 'undefined' ? window : this, function (window, document) {
 
     'use strict';
 
@@ -47,11 +47,23 @@
         if (typeof document.CustomEvent === 'function') {
             this.event = new document.CustomEvent('shake', {
                 bubbles: true,
-                cancelable: true
+                cancelable: true,
+                detail: {strength: 0}
             });
         } else if (typeof document.createEvent === 'function') {
             this.event = document.createEvent('Event');
-            this.event.initEvent('shake', true, true);
+            //for devices support initCustomEvent
+            if (typeof this.event.initCustomEvent === 'function') {
+                this.event.initCustomEvent('shake',
+                    true,
+                    true,
+                    {strength: 0}
+                );                
+            } else {
+                //for devices which don't support CustomEvent at all
+                this.event.initEvent('shake', true, true);
+                this.event.detail = {strength: 0};
+            }
         } else {
             return false;
         }
@@ -107,6 +119,7 @@
             timeDifference = currentTime.getTime() - this.lastTime.getTime();
 
             if (timeDifference > this.options.timeout) {
+                this.event.detail.strength = Math.sqrt(Math.pow((current.x), 2) + Math.pow((current.y), 2) + Math.pow((current.z), 2));
                 window.dispatchEvent(this.event);
                 this.lastTime = new Date();
             }
