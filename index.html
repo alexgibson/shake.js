@@ -26,14 +26,13 @@ body {
 
 <p><a href="http://dev.w3.org/geo/api/spec-source-orientation">W3C DeviceOrientation Event Specification</a></p>
 
-<p>TTTTT</p>
 
 <script type="text/javascript">
 window.onload = function() {
 
     //create a new instance of shake.js.
     var myShakeEvent = new Shake({
-        threshold: 8
+        threshold: 15
     });
 
     // start listening to device motion
@@ -44,10 +43,10 @@ window.onload = function() {
 
     //shake event callback
     function shakeEventDidOccur (e) {
-        
+
 
         //put your own code here etc.
-        alert('Shake, the strength:'+e.detail.strength);
+        alert('Shake, the strength: ' + e.detail.strength);
     }
 };
 </script>

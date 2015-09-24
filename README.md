@@ -65,7 +65,7 @@ window.addEventListener('shake', shakeEventDidOccur, false);
 function shakeEventDidOccur (e) {
 
     //put your own code here etc.
-    alert('Shake, the strength:'+e.detail.strength);
+    alert('Shake, the strength: ' + e.detail.strength);
 }
 ```
 
