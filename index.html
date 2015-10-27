@@ -26,7 +26,6 @@ body {
 
 <p><a href="http://dev.w3.org/geo/api/spec-source-orientation">W3C DeviceOrientation Event Specification</a></p>
 
-
 <script type="text/javascript">
 window.onload = function() {
 
@@ -42,11 +41,10 @@ window.onload = function() {
     window.addEventListener('shake', shakeEventDidOccur, false);
 
     //shake event callback
-    function shakeEventDidOccur (e) {
-
+    function shakeEventDidOccur () {
 
         //put your own code here etc.
-        alert('Shake, the strength: ' + e.detail.strength);
+        alert('Shake!');
     }
 };
 </script>
