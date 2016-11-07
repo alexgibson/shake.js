@@ -41,12 +41,24 @@ In the browser:
 <script src="shake.js"></script>
 ```
 
+Now, create your custom code
+
+```html
+<script>
+function myStuffWhenItShakes() {
+    // custom code here, for example
+    console.log("I'm shaken to the core"!);
+}
+</script>
+```
+
 Next, create a new Shake instance:
 
-```
+```javascript
 var myShakeEvent = new Shake({
     threshold: 15, // optional shake strength threshold
-    timeout: 1000 // optional, determines the frequency of event generation
+    timeout: 1000, // optional, determines the frequency of event generation
+    callback: myStuffWhenItShakes   // optional but important, without it, shakes will only cause console-log entries
 });
 ```
 
@@ -56,30 +68,15 @@ Start listening to device motion:
 myShakeEvent.start();
 ```
 
-Register a `shake` event listener on `window` with your callback:
-
-```
-window.addEventListener('shake', shakeEventDidOccur, false);
-
-//function to call when shake occurs
-function shakeEventDidOccur () {
-
-    //put your own code here etc.
-    alert('shake!');
-}
-```
-
-You can stop listening for shake events like so:
-
-```
-window.removeEventListener('shake', shakeEventDidOccur, false);
-```
-
 To stop listening to device motion, you can call:
 
 ```
 myShakeEvent.stop();
 ```
+
+Breaking Changes in Version 2
+---------------------------------------
+Version 1 used a window-event mechanism, which was replaced by a callback in V2. So any V1 code will fail, but it's easy and quick to adjust to V2.
 
 Supported web browsers/devices
 ---------------------------------------
@@ -91,3 +88,8 @@ Supported web browsers/devices
 - BlackBerry PlayBook 2.0
 - Firefox for Android
 - FirefoxOS Devices
+
+
+Chrome Warning
+---------------------------------------
+At the moment, the desktop-chrome browser will generate a warning that shake-detection should be used on https-sites and will be deprecated on non-secure sites some time in the future. We recommend that you take notice and try to move to https. 

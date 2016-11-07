@@ -3,8 +3,8 @@
     "description": "A custom 'shake' event plugin for mobile web browsers using device accelerometer.",
     "version": "1.2.3",
     "author": {
-        "name": "Alex Gibson & Daniel Mettler",
-        "email": "alxgbsn@gmail.com & info@2sxc.org"
+        "name": "Alex Gibson",
+        "email": "alxgbsn@gmail.com"
     },
     "keywords": ["javascript", "shake", "gesture", "event"],
     "main": "./shake.js",
