@@ -24,7 +24,8 @@
 
         this.options = {
             threshold: 15, //default velocity threshold for shake to register
-            timeout: 1000 //default interval between events
+            timeout: 1000,
+            callback: function() {}//default interval between events
         };
 
         if (typeof options === 'object') {
@@ -44,17 +45,17 @@
         this.lastZ = null;
 
         //create custom event
-        if (typeof document.CustomEvent === 'function') {
-            this.event = new document.CustomEvent('shake', {
-                bubbles: true,
-                cancelable: true
-            });
-        } else if (typeof document.createEvent === 'function') {
-            this.event = document.createEvent('Event');
-            this.event.initEvent('shake', true, true);
-        } else {
-            return false;
-        }
+        // if (typeof document.CustomEvent === 'function') {
+        //     this.event = new document.CustomEvent('shake', {
+        //         bubbles: true,
+        //         cancelable: true
+        //     });
+        // } else if (typeof document.createEvent === 'function') {
+        //     this.event = document.createEvent('Event');
+        //     this.event.initEvent('shake', true, true);
+        // } else {
+        //     return false;
+        // }
     }
 
     //reset timer values
@@ -107,7 +108,10 @@
             timeDifference = currentTime.getTime() - this.lastTime.getTime();
 
             if (timeDifference > this.options.timeout) {
-                window.dispatchEvent(this.event);
+                if( typeof this.options.callback === 'function' ) {
+                    this.options.callback();
+                }
+                //window.dispatchEvent(this.event);
                 this.lastTime = new Date();
             }
         }
