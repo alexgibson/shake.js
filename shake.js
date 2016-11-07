@@ -24,7 +24,8 @@
 
         this.options = {
             threshold: 15, //default velocity threshold for shake to register
-            timeout: 1000 //default interval between events
+            timeout: 1000,
+            callback: null // callback - will only be used if provided, otherwise generate event // function() {}//default interval between events
         };
 
         if (typeof options === 'object') {
@@ -42,19 +43,6 @@
         this.lastX = null;
         this.lastY = null;
         this.lastZ = null;
-
-        //create custom event
-        if (typeof document.CustomEvent === 'function') {
-            this.event = new document.CustomEvent('shake', {
-                bubbles: true,
-                cancelable: true
-            });
-        } else if (typeof document.createEvent === 'function') {
-            this.event = document.createEvent('Event');
-            this.event.initEvent('shake', true, true);
-        } else {
-            return false;
-        }
     }
 
     //reset timer values
@@ -105,9 +93,14 @@
             //calculate time in milliseconds since last shake registered
             currentTime = new Date();
             timeDifference = currentTime.getTime() - this.lastTime.getTime();
-
+            
             if (timeDifference > this.options.timeout) {
-                window.dispatchEvent(this.event);
+                // once triggered, execute  the callback
+                if( typeof this.options.callback === 'function' ) {
+                    this.options.callback();
+                }
+                else
+                    console.log("shake event without callback detected");
                 this.lastTime = new Date();
             }
         }
@@ -115,7 +108,6 @@
         this.lastX = current.x;
         this.lastY = current.y;
         this.lastZ = current.z;
-
     };
 
     //event handler
