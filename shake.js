@@ -107,6 +107,11 @@
             timeDifference = currentTime.getTime() - this.lastTime.getTime();
 
             if (timeDifference > this.options.timeout) {
+                this.event.acceleration = {
+                    deltaX: deltaX,
+                    deltaY: deltaY,
+                    deltaZ: deltaZ
+                }
                 window.dispatchEvent(this.event);
                 this.lastTime = new Date();
             }
