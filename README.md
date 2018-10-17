@@ -4,10 +4,7 @@ A custom 'shake' event JavaScript plugin for mobile web browsers using device ac
 
 ## Installation
 
-* Download: [zip](https://github.com/alexgibson/shake.js/zipball/master)
-* [NPM](https://www.npmjs.com/package/shake.js): `npm install shake.js`
-* [Bower](https://github.com/twitter/bower/): `bower install shake.js`
-* Git: `git clone https://github.com/alexgibson/shake.js`
+* [NPM](https://www.npmjs.com/package/shake.js): `npm i -s shake.js`
 
 ## Dependencies
 
@@ -16,7 +13,6 @@ Your web browser must support the `devicemotion` event for this plugin to work. 
 * [DeviceOrientation Event Specification](https://w3c.github.io/deviceorientation/)
 
 ## Setup
----------------------------------------
 
 ### For CommonJS using NPM:
 
@@ -63,7 +59,6 @@ myShakeEvent.stop();
 ```
 
 ## Supported web browsers/devices
----------------------------------------
 
 - iOS Safari 4.2.1 (and above)
 - Android 4.0.3 (default browser)
