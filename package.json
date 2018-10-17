@@ -1,21 +1,28 @@
 {
   "name": "shake.js",
-  "version": "1.2.2",
+  "version": "2.0.0",
   "description": "A custom 'shake' event plugin for mobile web browsers using device accelerometer.",
   "keywords": [
     "shake",
     "gesture",
     "event"
   ],
-  "main": "shake.js",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "babel -d dist/ src/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/alexgibson/shake.js.git"
   },
-  "author": "alexgibson",
+  "author": "alexgibson, losnen",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/alexgibson/shake.js/issues"
   },
-  "homepage": "https://github.com/alexgibson/shake.js#readme"
+  "homepage": "https://github.com/alexgibson/shake.js#readme",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.24.1"
+  }
 }
